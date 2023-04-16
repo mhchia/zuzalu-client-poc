@@ -8,7 +8,7 @@ import {
   PASSPORT_URL,
   SEMAPHORE_GROUP_URL,
 } from "../src/constants";
-import { requestProofFromPassport } from "../src/util";
+import { generateRLNProof, requestProofFromPassport } from "../src/util";
 import {
   requestZuzaluRLNUrl,
   usePassportResponse,
@@ -22,29 +22,41 @@ import {
  * request a RLN proof as a third party developer.
  */
 export default function Page() {
-  const [passportPCDStr, passportPendingPCDStr] = usePassportResponse();
-  const [serverProving, setServerProving] = useState(false);
-  const [pendingPCDStatus, serverPCDStr] = usePendingPCD(
-    passportPendingPCDStr,
-    PASSPORT_SERVER_URL
-  );
-  const pcdStr = usePCDMultiplexer(passportPCDStr, serverPCDStr);
-  const { proof, group, valid } = useRLNProof(
-    SEMAPHORE_GROUP_URL,
-    pcdStr
-  );
+  // const [passportPCDStr, passportPendingPCDStr] = usePassportResponse();
+  // const [serverProving, setServerProving] = useState(false);
+  // const [pendingPCDStatus, serverPCDStr] = usePendingPCD(
+  //   passportPendingPCDStr,
+  //   PASSPORT_SERVER_URL
+  // );
+  // const pcdStr = usePCDMultiplexer(passportPCDStr, serverPCDStr);
+  // const { proof, group, valid } = useRLNProof(
+  //   SEMAPHORE_GROUP_URL,
+  //   pcdStr
+  // );
 
   return (
     <>
       <h2>Zuzalu RLN Proof</h2>
       <ExampleContainer>
         <button
-          onClick={() => requestZuzaluMembershipProof(serverProving)}
-          disabled={valid}
+          onClick={async () => {
+            const rlnIdentifier = BigInt(12345);
+            const signal = "1337";
+            const epoch = BigInt(2);
+            console.log("!@# SHIT 0")
+            const rlnProof = await generateRLNProof(
+              epoch,
+              signal,
+              rlnIdentifier,
+            );
+            console.log("!@# SHIT 1")
+            console.log("!@# proof = ", rlnProof);
+          }}
+          // disabled={valid}
         >
           Request RLN Proof
         </button>
-        <label>
+        {/* <label>
           <input
             type="checkbox"
             checked={serverProving}
@@ -69,7 +81,7 @@ export default function Page() {
             {valid === true && <p>✅ Proof is valid</p>}
           </>
         )}
-        {valid && <p>Welcome, anon</p>}
+        {valid && <p>Welcome, anon</p>} */}
       </ExampleContainer>
     </>
   );
