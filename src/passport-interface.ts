@@ -144,7 +144,6 @@ async function verifyRLNProof(
   return expectedGroup.root.toString() === merkleRoot.toString();
 }
 
-
 export {
     usePassportResponse,
     usePCDMultiplexer,

@@ -4566,20 +4566,6 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
-rlnjs@^2.0.8:
-  version "2.0.8"
-  resolved "https://registry.yarnpkg.com/rlnjs/-/rlnjs-2.0.8.tgz#1440f8aa9c3d1266c4ab9a624a4cbfc08b63e72b"
-  integrity sha512-UbB4wZLryC+w8DM39z0fJrDqkNWB5yG8cUTgQHoMcgfLjVb6yubgmCesFhRn9bcrreSad9+3xe17EUU7vPCG/A==
-  dependencies:
-    "@ethersproject/bytes" "^5.6.1"
-    "@ethersproject/solidity" "^5.6.1"
-    "@ethersproject/strings" "^5.6.1"
-    "@semaphore-protocol/identity" "^2.6.1"
-    "@zk-kit/incremental-merkle-tree" "^0.4.3"
-    ffjavascript "0.2.55"
-    poseidon-lite "^0.0.2"
-    snarkjs "^0.4.22"
-
 rlp@^2.2.4:
   version "2.2.7"
   resolved "https://registry.yarnpkg.com/rlp/-/rlp-2.2.7.tgz#33f31c4afac81124ac4b283e2bd4d9720b30beaf"
@@ -5021,6 +5007,20 @@ tar@^4.0.2:
     mkdirp "^0.5.5"
     safe-buffer "^5.2.1"
     yallist "^3.1.1"
+
+test-rlnjs@^2.1.4:
+  version "2.1.4"
+  resolved "https://registry.yarnpkg.com/test-rlnjs/-/test-rlnjs-2.1.4.tgz#81c74fc20cb567d9598fdd1588cd57f705a3b99b"
+  integrity sha512-Yt5D8emQnpsffVIxALIQ1SGSykK2gB5wj3o5xetbr35kiygX5wrtAsOz/QqKZ9TDOSgx7TdJWGJIgUJSBZ1pyQ==
+  dependencies:
+    "@ethersproject/bytes" "^5.6.1"
+    "@ethersproject/solidity" "^5.6.1"
+    "@ethersproject/strings" "^5.6.1"
+    "@semaphore-protocol/identity" "^2.6.1"
+    "@zk-kit/incremental-merkle-tree" "^0.4.3"
+    ffjavascript "0.2.55"
+    poseidon-lite "^0.0.2"
+    snarkjs "^0.4.22"
 
 text-table@^0.2.0:
   version "0.2.0"

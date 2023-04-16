@@ -88,7 +88,59 @@ function requestZuzaluMembershipProof(proveOnServer: boolean) {
     signal,
     epoch,
     proveOnServer
-  );
+    );
+  console.log(`!@# window.location.origin = `, window.location.origin)
+  console.log(`!@# proofUrl = `, proofUrl)
 
   requestProofFromPassport(proofUrl);
 }
+
+
+// async function requestZuzaluMembershipProof(proveOnServer: boolean): Promise<any> {
+//   const rlnIdentifier = "12345";
+//   const signal = "1337";
+//   const epoch = "2";
+//   const proofUrl = requestZuzaluRLNUrl(
+//     PASSPORT_URL,
+//     window.location.origin + "/popup",
+//     SEMAPHORE_GROUP_URL,
+//     rlnIdentifier,
+//     signal,
+//     epoch,
+//     proveOnServer
+//   );
+
+//   return new Promise((resolve, reject) => {
+//     // 打开 Passport 弹窗
+//     const passportWindow = window.open(proofUrl, 'passport-popup', 'width=600,height=600');
+
+//     // 监听来自 Passport 的消息
+//     const messageHandler = (event: MessageEvent) => {
+//       if (event.origin !== PASSPORT_URL) {
+//         return;
+//       }
+
+//       const { data } = event;
+//       if (data.type === 'rln_proof') {
+//         // 收到 RLN Proof，解析 Promise 并移除事件监听器
+//         resolve(data.proof);
+//         window.removeEventListener('message', messageHandler);
+//       } else if (data.type === 'error') {
+//         // 收到错误消息，拒绝 Promise 并移除事件监听器
+//         reject(new Error(data.message));
+//         window.removeEventListener('message', messageHandler);
+//       }
+//     };
+
+//     window.addEventListener('message', messageHandler);
+
+//     // 如果 Passport 弹窗关闭，拒绝 Promise 并移除事件监听器
+//     const checkPassportWindowClosed = setInterval(() => {
+//       if (passportWindow.closed) {
+//         reject(new Error('Passport window closed'));
+//         window.removeEventListener('message', messageHandler);
+//         clearInterval(checkPassportWindowClosed);
+//       }
+//     }, 1000);
+//   });
+// }
